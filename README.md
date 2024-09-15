@@ -2,7 +2,7 @@
 
 ### Elevator pitch
 
-Are you ready for a fresh and inspiring fantasy? Are you eager to find a story that doesn't follow predictable plots found all over your local bookstore? This website shows the best rising author and allows you to see her best selling novels and sign up for exclusive updates of future progress. 
+Are you ready for a fresh and inspiring fantasy? Are you eager to find a story that doesn't follow predictable plots found all over your local bookstore? This website shows the best rising author and allows you to see her best selling novels and sign up for exclusive updates of future progress. You also get to see how excited everyone else is by seeing the number of avid fans and their top comments.
 
 ![Home Page](homepg.jpg)
 ![About Page](aboutpg.jpg)
