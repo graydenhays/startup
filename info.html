@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Author Template Site</title>
+        <link rel="icon" href="favicon.ico" />
+    </head>
+    <body>
+        <header>
+            <img src="user icon.jpg" alt="User Icon">
+            <p>Profile Name</p>
+            <h1>Author Website</h1>
+            <!-- Navigation -->
+            <nav>
+                <menu>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="info.html">Info</a></li>
+                </menu>
+            </nav>
+            <hr />
+        </header>
+
+    <main>
+      <div class="players">
+        Player:
+        <span class="player-name">Mystery player</span>
+      </div>
+      <ul class="notification">
+        <li class="player-name">Tim started a new game</li>
+        <li class="player-name">Ada started a new game</li>
+        <li class="player-name">Tim scored 337</li>
+      </ul>
+
+      <!-- More formatting with old style HTML -->
+      <br />
+
+      <div>
+        <label for="count">Score</label>
+        <input type="text" id="count" value="--" readonly />
+      </div>
+
+      <br />
+
+      <div>
+        <button>Reset</button>
+      </div>
+
+      <br />
+
+      <div>
+        <table>
+          <tr>
+            <td>
+              <button>
+                <svg aria-hidden="true" viewBox="0 0 100 100" height="100" width="100">
+                  <!-- SVG
+                    M move <to x,y>
+                    Q quadratic curve <control point x,y> <to x,y>
+                -->
+                  <path d="M 95,5 95,95 5,95 Q 5,5 95,5" fill="green" />
+                </svg>
+              </button>
+            </td>
+            <td>
+              <button>
+                <svg aria-hidden="true" viewBox="0 0 100 100" height="100" width="100">
+                  <path d="M5,5 5,95 95,95 Q 95,5 5,5" fill="red" />
+                </svg>
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <button>
+                <svg aria-hidden="true" viewBox="0 0 100 100" height="100" width="100">
+                  <path d="M5,5 95,5 95,95 Q 5,95 5,5" fill="blue" />
+                </svg>
+              </button>
+            </td>
+            <td>
+              <button>
+                <svg aria-hidden="true" viewBox="0 0 100 100" height="100" width="100">
+                  <path d="M95,5 5,5 5,95 Q 95,95 95,5" fill="yellow" />
+                </svg>
+              </button>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </main>
+
+    <footer>
+        <hr />
+        <span class="text-reset">Grayden Hays</span>
+        <br />
+        <a href="https://github.com/graydenhays/startup">GitHub</a>
+    </footer>
+  </body>
+</html>
