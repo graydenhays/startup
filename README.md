@@ -40,7 +40,7 @@ Here are the HTML element I included for my deliverable.
 - [x] **HTML pages** - Three HTML pages that allow users to register, comment, and see more info.
 - [x] **Links** - The signup button automatically links to the info page. The nav bar contains links for every page. The unsubscribe button redirects to the main page.
 - [x] **Text** - There are textual elements on the about and info pages, as well as user input with the comments section.
-- [ ] **Images** - I included images on each page and plan on creating a slideshow on the main page.
+- [x] **Images** - I included images on each page and plan on creating a slideshow on the main page.
 - [x] **DB/Login** - Input box and submit button for login. Comments and the number of subscribers will also be stored.
 - [x] **WebSocket** - There will be a real time updating tally of total subscribers as well as updates for comments from other users.
 
