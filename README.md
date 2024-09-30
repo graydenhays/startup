@@ -33,4 +33,15 @@ I am going to use the required technologies in the following ways.
 - **DB/Login** - Store user profile information in database. Register and login users. Securely stores all sensitive account data in database. Can't unsubrcribe from notifications unless authenticated.
 - **WebSocket** - As each user registers, the total subscriber tally increments by one and is updated for all other users
 
+### HTML deliverable
+
+Here are the HTML element I included for my deliverable.
+
+- [x] **HTML pages** - Three HTML pages that allow users to register, comment, and see more info.
+- [x] **Links** - The signup button automatically links to the info page. The nav bar contains links for every page. The unsubscribe button redirects to the main page.
+- [x] **Text** - There are textual elements on the about and info pages, as well as user input with the comments section.
+- [ ] **Images** - I included images on each page and plan on creating a slideshow on the main page.
+- [x] **DB/Login** - Input box and submit button for login. Comments and the number of subscribers will also be stored.
+- [x] **WebSocket** - There will be a real time updating tally of total subscribers as well as updates for comments from other users.
+
 [Link to notes](https://github.com/graydenhays/startup/blob/main/notes.md)
