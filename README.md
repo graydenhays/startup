@@ -43,5 +43,6 @@ Here are the HTML element I included for my deliverable.
 - [x] **Images** - I included images on each page and plan on creating a slideshow on the main page.
 - [x] **DB/Login** - Input box and submit button for login. Comments and the number of subscribers will also be stored.
 - [x] **WebSocket** - There will be a real time updating tally of total subscribers as well as updates for comments from other users.
+- [x] **Third Party Service Call** - I included a placeholder for there to be a link which will redirect the user to the default mail feature on their device.
 
 [Link to notes](https://github.com/graydenhays/startup/blob/main/notes.md)
