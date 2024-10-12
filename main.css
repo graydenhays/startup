@@ -8,6 +8,10 @@ header {
   flex: 0 80px;
 }
 
+a.navStyles {
+  padding-right: 2rem;
+}
+
 main {
   flex: 1 calc(100vh - 110px);
   display: flex;
