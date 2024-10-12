@@ -17,11 +17,11 @@
     </head>
     <body>
         <header>
-            <div class="d-flex flex-row">
-                <img src="user icon.jpg" alt="User Icon" width="30px" height="30px">
+            <div class="d-flex flex-row p-2">
+                <img class="me-2" src="user icon.jpg" alt="User Icon" width="30px" height="30px">
                 <p>Hello *profile name here*!!</p>
             </div>
-            <h1 style="display: flex; justify-content: flex-end;">Author Website</h1>
+            <h1 style="display: flex; justify-content: flex-end; padding-right: 1rem;">Author Website</h1>
             <!-- Navigation -->
             <nav>
                 <menu>
@@ -34,21 +34,28 @@
         </header>
 
         <main>
-            <h1>Home Page</h1>
-            
-            <h3>Book Showcase</h3>
-            <div class="d-flex flex-row">
-                <img src="merlin's dragon.jpg" alt="Merlin's Dragon" width="100px" height="150px">
-                <img src="gregor the overlander.jpg" alt="Code of the Claw" width="100px" height="150px">
-                <img src="the-way-of-kings-by-brandon-sanderson.png" alt="Way of Kings" width="100px" height="150px">
+            <h1 class="p-4">Home Page</h1>
+            <div>
+                <div>
+                    <img class="slideshow" src="merlin's dragon.jpg" alt="Merlin's Dragon">
+                    <img class="slideshow" src="gregor the overlander.jpg" alt="Code of the Claw">
+                    <img class="slideshow" src="the-way-of-kings-by-brandon-sanderson.png" alt="Way of Kings">
+                </div>
+                <p style="font-size: 1.25rem;" class="d-flex justify-content-center p-4">Brief description of current book on slide</p>
             </div>
 
-            <h3>Reviews</h3>
-            <p>Comment #1</p>
-            <p>Comment #2</p>
-            <p>Comment #3</p>
-            <input type="text" placeholder="Add comment here..." />
-            <button type="submit">Add Comment</button>
+            <div class="d-flex flex-column">
+                <h3>Reviews</h3>
+                <div>
+                    <p>Comment #1</p>
+                    <p>Comment #2</p>
+                    <p>Comment #3</p>
+                </div>
+                <div>
+                    <input type="text" placeholder="Add comment here..." />
+                    <button type="submit">Add Comment</button>
+                </div>
+            </div>
 
             <h5>Sign up for monthly updates!</h5>
             <form method="get" action="info.html">

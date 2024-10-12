@@ -9,7 +9,7 @@ header {
 }
 
 a.navStyles {
-  padding-right: 2rem;
+  padding-right: 1rem;
 }
 
 main {
@@ -17,7 +17,6 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
 }
 
 footer {
@@ -33,8 +32,19 @@ menu {
 }
 
 .navbar-brand {
-  padding-left: 0.3em;
   border-bottom: solid rgb(182, 182, 182) thin;
+}
+
+div.commentStyles {
+  justify-content: flex-start;
+  display: flex;
+}
+
+img.slideshow {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  width: 250px;
+  height: 300px;
 }
 
 menu .nav-item {
