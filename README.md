@@ -35,7 +35,7 @@ I am going to use the required technologies in the following ways.
 
 ### HTML deliverable
 
-Here are the HTML element I included for my deliverable.
+Here are the HTML elements I included for my deliverable.
 
 - [x] **HTML pages** - Three HTML pages that allow users to register, comment, and see more info.
 - [x] **Links** - The signup button automatically links to the info page. The nav bar contains links for every page. The unsubscribe button redirects to the main page.
@@ -44,5 +44,16 @@ Here are the HTML element I included for my deliverable.
 - [x] **DB/Login** - Input box and submit button for login. Comments and the number of subscribers will also be stored.
 - [x] **WebSocket** - There will be a real time updating tally of total subscribers as well as updates for comments from other users.
 - [x] **Third Party Service Call** - I included a placeholder for there to be a link which will redirect the user to the default mail feature on their device.
+
+### CSS deliverable
+
+Here are the HTML elements I included for my deliverable.
+
+- [x] **Styling for header, footer, and main content body**
+- [x] **Nav elements** - I changed the color, removed underlines, and added a background to the menu bar.
+- [x] **Responsive to window resizing** - My app looks great on all window sizes and devices. If the window gets very small, then the header and footer will not be displayed.
+- [x] **Application elements** - Separated elements with appropriate whitespace, color changes and horizontal lines.
+- [x] **Application text content** - Fonts are all consistent. Some fonts have a different color for contrast.
+- [x] **Application images** - Images are sized appropriately
 
 [Link to notes](https://github.com/graydenhays/startup/blob/main/notes.md)
