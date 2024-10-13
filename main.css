@@ -70,7 +70,7 @@ footer span {
   float: right;
 }
 
-@media (max-height: 600px) {
+@media (max-height: 300px) {
   header {
     display: none;
   }
