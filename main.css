@@ -2,6 +2,8 @@ body {
   display: flex;
   flex-direction: column;
   min-width: 375px;
+  background-color:darkslategrey !important;
+  color:darkgray !important;
 }
 
 header {
@@ -9,7 +11,11 @@ header {
 }
 
 a.navStyles {
-  padding-right: 1rem;
+  padding: 1rem;
+  background-color:cadetblue;
+  color:black;
+  text-decoration: none;
+  font-size: larger;
 }
 
 main {
@@ -36,7 +42,6 @@ menu {
 }
 
 div.commentStyles {
-  justify-content: flex-start;
   display: flex;
 }
 
