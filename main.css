@@ -41,8 +41,14 @@ menu {
   border-bottom: solid rgb(182, 182, 182) thin;
 }
 
-div.commentStyles {
-  display: flex;
+hr {
+  border-top: solid rgb(182, 182, 182) thin;
+  width: 100%;
+  size: 2;
+}
+
+p {
+  margin-bottom: 0rem !important;
 }
 
 img.slideshow {
@@ -57,6 +63,10 @@ menu .nav-item {
 }
 
 footer a {
+  float: right;
+}
+
+footer span {
   float: right;
 }
 
