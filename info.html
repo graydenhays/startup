@@ -16,17 +16,17 @@
     </head>
     <body>
         <header>
-            <div>
-                <img src="user icon.jpg" alt="User Icon" width="30px" height="30px">
+            <div class="d-flex flex-row p-2">
+                <img class="me-2" src="user icon.jpg" alt="User Icon" width="30px" height="30px">
                 <p>Hello *profile name here*!!</p>
             </div>
-            <h1>Author Website</h1>
+            <h1 style="display: flex; justify-content: flex-end; padding-right: 1rem;">Author Website</h1>
             <!-- Navigation -->
             <nav>
                 <menu>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="info.html">Info</a></li>
+                    <a class="navStyles" href="index.html">Home</a>
+                    <a class="navStyles" href="about.html">About</a>
+                    <a class="navStyles" href="info.html">Info</a>
                 </menu>
             </nav>
             <hr />
@@ -42,11 +42,10 @@
       <p>Would you like to unsubscribe? Click <a href="index.html">here</a></p>
     </main>
 
-    <footer>
+    <footer class="d-flex flex-column mb-3">
         <hr />
-        <span class="text-reset">Grayden Hays</span>
-        <br />
-        <a href="https://github.com/graydenhays/startup">GitHub</a>
+        <span style="font-size: large;" class="p-2">Grayden Hays</span>
+        <a style="font-size: large;" class="p-2" href="https://github.com/graydenhays/startup">GitHub</a>
     </footer>
   </body>
 </html>
