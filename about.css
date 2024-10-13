@@ -1,0 +1,9 @@
+img.picture {
+  height: 500px;
+  width: 700px;
+}
+
+div.quote {
+  background-color: darkgray;
+  color: black;
+}
