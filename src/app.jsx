@@ -34,13 +34,6 @@ function App() {
                   </NavLink>
                 </li>
               )}
-              {authState === AuthState.Authenticated && (
-                <li className='nav-item'>
-                  <NavLink className='nav-link' to='scores'>
-                    Scores
-                  </NavLink>
-                </li>
-              )}
               <li className='nav-item'>
                 <NavLink className='nav-link' to='about'>
                   About
@@ -66,16 +59,15 @@ function App() {
             exact
           />
           <Route path='/info' element={<Info userName={userName} />} />
-          <Route path='/scores' element={<Scores />} />
           <Route path='/about' element={<About />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
 
         <footer className='bg-dark text-dark text-muted'>
           <div className='container-fluid'>
-            <span className='text-reset'>Author Name(s)</span>
-            <a className='text-reset' href='https://github.com/webprogramming260/simon-react'>
-              Source
+            <span className='text-reset'>Grayden Hays</span>
+            <a className='text-reset' href='https://github.com/graydenhays/startup'>
+              GitHub
             </a>
           </div>
         </footer>
