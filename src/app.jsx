@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Login } from './login/login';
-import { Play } from './play/play';
-import { Scores } from './scores/scores';
+import { Info } from './info/info';
+// import { Home } from './home/home'; // is this necessary? same as login?
 import { About } from './about/about';
 import { AuthState } from './login/authState';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -19,7 +19,7 @@ function App() {
         <header className='container-fluid'>
           <nav className='navbar fixed-top navbar-dark'>
             <div className='navbar-brand'>
-              Simon<sup>&reg;</sup>
+              Author Page<sup>&reg;</sup>
             </div>
             <menu className='navbar-nav'>
               <li className='nav-item'>
@@ -29,8 +29,8 @@ function App() {
               </li>
               {authState === AuthState.Authenticated && (
                 <li className='nav-item'>
-                  <NavLink className='nav-link' to='play'>
-                    Play
+                  <NavLink className='nav-link' to='info'>
+                    Info
                   </NavLink>
                 </li>
               )}
@@ -65,7 +65,7 @@ function App() {
             }
             exact
           />
-          <Route path='/play' element={<Play userName={userName} />} />
+          <Route path='/info' element={<Info userName={userName} />} />
           <Route path='/scores' element={<Scores />} />
           <Route path='/about' element={<About />} />
           <Route path='*' element={<NotFound />} />
