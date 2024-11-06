@@ -1,10 +1,8 @@
 import React from 'react';
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
-import { Login } from './login/login';
 import { Info } from './info/info';
-// import { Home } from './home/home'; // is this necessary? same as login?
+import { Home } from './home/home';
 import { About } from './about/about';
-import { AuthState } from './login/authState';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.css';
 
@@ -23,17 +21,15 @@ function App() {
             </div>
             <menu className='navbar-nav'>
               <li className='nav-item'>
-                <NavLink className='nav-link' to=''>
-                  Login
+                <NavLink className='nav-link' to='home'>
+                  Home
                 </NavLink>
               </li>
-              {authState === AuthState.Authenticated && (
-                <li className='nav-item'>
-                  <NavLink className='nav-link' to='info'>
-                    Info
-                  </NavLink>
-                </li>
-              )}
+              <li className='nav-item'>
+                <NavLink className='nav-link' to='info'>
+                  Info
+                </NavLink>
+              </li>
               <li className='nav-item'>
                 <NavLink className='nav-link' to='about'>
                   About
@@ -44,20 +40,7 @@ function App() {
         </header>
 
         <Routes>
-          <Route
-            path='/'
-            element={
-              <Login
-                userName={userName}
-                authState={authState}
-                onAuthChange={(userName, authState) => {
-                  setAuthState(authState);
-                  setUserName(userName);
-                }}
-              />
-            }
-            exact
-          />
+          <Route path='/home' element={<Home />} />
           <Route path='/info' element={<Info userName={userName} />} />
           <Route path='/about' element={<About />} />
           <Route path='*' element={<NotFound />} />
