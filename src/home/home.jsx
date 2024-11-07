@@ -1,4 +1,6 @@
 import React from 'react';
+import Footer from '../Footer'
+import Header from '../Header'
 import './home.css';
 
 export function Home(props) {
@@ -19,22 +21,7 @@ export function Home(props) {
 
   return (
     <body>
-      <header>
-        <div class="d-flex flex-row p-2">
-          <img class="me-2" src="user icon.jpg" alt="User Icon" width="30px" height="30px" />
-          <p>Hello *profile name here*!!</p>
-        </div>
-        <h1 style="display: flex; justify-content: flex-end; padding-right: 1rem;">Author Website</h1>
-        {/* Navigation */}
-        <nav>
-          <menu>
-            <a class="navStyles" href="index.html">Home</a>
-            <a class="navStyles" href="about.html">About</a>
-            <a class="navStyles" href="info.html">Info</a>
-          </menu>
-        </nav>
-        <hr />
-      </header>
+      <Header />
 
       <main>
         <h1 class="p-4">Home Page</h1>
@@ -84,11 +71,7 @@ export function Home(props) {
         </div>
       </main>
 
-      <footer class="d-flex flex-column mb-3">
-        <hr />
-        <span style="font-size: large;" class="p-2">Grayden Hays</span>
-        <a style="font-size: large;" class="p-2" href="https://github.com/graydenhays/startup">GitHub</a>
-      </footer>
+      <Footer />
     </body>
   );
 }
