@@ -35,8 +35,9 @@ function App() {
           </nav>
         </header>
 
+
         <Routes>
-          <Route path='/' element={<Home />} />
+          <Route path='/' element={<Home />} /> {/* The Home component is the problem */}
           <Route path='/info' element={<Info />} />
           <Route path='/about' element={<About />} />
           <Route path='*' element={<NotFound />} />
