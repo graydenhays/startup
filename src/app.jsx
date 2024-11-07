@@ -17,7 +17,7 @@ function App() {
             </div>
             <menu className='navbar-nav'>
               <li className='nav-item'>
-                <NavLink className='nav-link' to='home'>
+                <NavLink className='nav-link' to=''>
                   Home
                 </NavLink>
               </li>
@@ -36,8 +36,8 @@ function App() {
         </header>
 
         <Routes>
-          <Route path='/home' element={<Home />} />
-          <Route path='/info' element={<Info userName={userName} />} />
+          <Route path='/' element={<Home />} />
+          <Route path='/info' element={<Info />} />
           <Route path='/about' element={<About />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
