@@ -1,36 +1,28 @@
 import React from 'react';
 import './about.css';
 
-export function About(props) {
-  const [imageUrl, setImageUrl] = React.useState('data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=');
-  const [quote, setQuote] = React.useState('Loading...');
-  const [quoteAuthor, setQuoteAuthor] = React.useState('unknown');
-
-  // We only want this to render the first time the component is created and so we provide an empty dependency list.
-  React.useEffect(() => {
-    setImageUrl(`placeholder.jpg`);
-    setQuote('Show me the code');
-    setQuoteAuthor('Linus Torvalds');
-  }, []);
+export function About() {
+  const [authorPic] = React.useState("Author Pic.png");
+  const [emailLink] = React.useState("index.html");
 
   return (
-    <main className='container-fluid bg-secondary text-center'>
-      <div>
-        <div id='picture' className='picture-box'>
-          <img src={imageUrl} alt='random image' />
-        </div>
+    <main>
+      <h1 className="p-4">Meet the Author</h1>
 
-        <p>Simon is a repetitive memory game where you follow the demonstrated color sequence until you make a mistake. The longer the sequence you repeat, the greater your score.</p>
+      <div><img className="picture p-4" src={authorPic} alt="Author Profile Picture" width="250px" height="200px"/></div>
 
+      <div className="p-4" style="font-size: x-large; text-align: center;">
         <p>
-          The name Simon is a registered trademark of Milton-Bradley. Our use of the name and the game is for non-profit educational use only. No part of this code or application may be used outside
-          of that definition.
+          Info about the Author
         </p>
-
-        <div className='quote-box bg-light text-dark'>
-          <p className='quote'>{quote}</p>
-          <p className='author'>{quoteAuthor}</p>
+        <div className="p-4"></div>
+        <div className="quote p-5">
+          <div>Here is a quote from the author.</div>
+          <div>- Me</div>
         </div>
+      </div>
+      <div style="font-size: x-large;">
+        Email me here: <a href={emailLink}>email</a>
       </div>
     </main>
   );
