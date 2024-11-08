@@ -1,12 +1,16 @@
 import React from 'react';
 import './about.css';
+import Footer from '../Footer'
+import Header from '../Header'
 
 export function About() {
   const [authorPic] = React.useState("Author Pic.png");
   const [emailLink] = React.useState("index.html");
 
   return (
-    <main>
+    <section>
+      <Header />
+
       <h1 className="p-4">Meet the Author</h1>
 
       <div><img className="picture p-4" src={authorPic} alt="Author Profile Picture" width="250px" height="200px"/></div>
@@ -24,6 +28,8 @@ export function About() {
       <div style="font-size: x-large;">
         Email me here: <a href={emailLink}>email</a>
       </div>
-    </main>
+
+      <Footer />
+    </section>
   );
 }
