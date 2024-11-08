@@ -56,4 +56,17 @@ Here are the HTML elements I included for my deliverable.
 - [x] **Application text content** - Fonts are all consistent. Some fonts have a different color for contrast.
 - [x] **Application images** - Images are sized appropriately
 
+## React deliverable
+
+For this deliverable I fully converted to React and added some Javascript functionality so that the application works for a single user. I maintained placeholders for future features
+
+- [x] **Bundled and transpiled** - finished!
+- [x] **Components** - Footer, voting list, vote are all components with mocks for login, WebSocket.
+  - [x] **login** - When you press the create button, the username in the top right corner will update.
+  - [x] **database** - Displayed the subscriber count. Currently this is hard coded, but it will be replaced with the database data later. There are also input areas for user information.
+  - [x] **WebSocket** - I used the setInterval function to periodically increase the subscriber count. This will be replaced with WebSocket messages later.
+  - [x] **application logic** - The highlight and ranking number change based up the user's selections.
+- [x] **Router** - Routing between info and about components.
+- [x] **Hooks** - React uses `UseState` to track changes in the subscriber count.
+
 [Link to notes](https://github.com/graydenhays/startup/blob/main/notes.md)
