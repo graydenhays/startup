@@ -45,7 +45,7 @@ function App() {
 
         <footer className='bg-dark text-dark text-muted'>
           <div className='container-fluid'>
-            <span className='text-reset'>Grayden Hays</span>
+            <span className='text-reset'>Grayden Hays testing</span>
             <a className='text-reset' href='https://github.com/graydenhays/startup'>
               GitHub
             </a>
