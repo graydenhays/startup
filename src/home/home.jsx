@@ -15,7 +15,7 @@ export function Home(props) {
 
   return (
     <section>
-      <Header />
+      {/* <Header /> */}
 
       <main>
         <h1 className="p-4">Home Page</h1>
@@ -78,7 +78,7 @@ export function Home(props) {
         </div>
       </main>
 
-      <Footer />
+      {/* <Footer /> */}
     </section>
   );
 }
