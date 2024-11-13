@@ -9,13 +9,16 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.css';
 
 function App() {
-  const [profileName] = React.useState("**enter profile name here**");
+  const [profileName, setName] = React.useState("**enter profile name here**");
   const [userIcon] = React.useState("../public/user_icon.jpg");
+  const updateName = (name) => {
+    setName(name)
+  }
   return (
     <BrowserRouter>
-      <div className='body bg-dark text-light'>
+      <div className='body text-light'>
         <header className='container-fluid'>
-          <nav className='navbar fixed-top navbar-dark'>
+          <nav className='navbar fixed-top bg-dark navbar-dark'>
             <div className='d-flex'>
               <div className='navbar-brand'>
                 Author Page<sup>&reg;</sup>
@@ -47,21 +50,13 @@ function App() {
 
 
         <Routes>
-          <Route path='/' element={<Home />} /> {/* The Home component is the problem */}
+          <Route path='/' element={<Home nameUpdate={updateName}/>} /> {/* The Home component is the problem */}
           <Route path='/info' element={<Info />} />
           <Route path='/about' element={<About />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
 
         <Footer />
-        {/* <footer className='bg-dark text-dark text-muted'>
-          <div className='container-fluid'>
-            <span className='text-reset'>Grayden Hays testing</span>
-            <a className='text-reset' href='https://github.com/graydenhays/startup'>
-              GitHub
-            </a>
-          </div>
-        </footer> */}
       </div>
     </BrowserRouter>
   );

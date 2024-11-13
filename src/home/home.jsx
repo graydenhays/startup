@@ -1,17 +1,15 @@
 import React from 'react';
-import Footer from '../Footer'
-import Header from '../Header'
 import './home.css';
-import { Container, Row, Col, Button, Card, Form, FormControl } from 'react-bootstrap';
+import { Button, Card, Form, FormControl } from 'react-bootstrap';
 
-export function Home(props) {
+export function Home({ nameUpdate }) {
   const [image1Url] = React.useState(`merlin's dragon.jpg`);
   const [image2Url] = React.useState(`gregor the overlander.jpg`);
   const [image3Url] = React.useState(`the-way-of-kings-by-brandon-sanderson.png`);
   const [bookDesc] = React.useState('Brief description of current book on slide');
-  const [commentURL] = React.useState("index.jsx");
-  const [loginURL] = React.useState("index.jsx");
-  const [createURL] = React.useState("index.jsx");
+  const [commentURL] = React.useState("../about/about.jsx");
+  const [loginURL] = React.useState("../info/info.jsx");
+  const [newName] = React.useState("New User");
 
   return (
     <section>
@@ -70,7 +68,7 @@ export function Home(props) {
               <Button variant='primary' onClick={() => navigate({ loginURL })}>
                 {'Login'}
               </Button>
-              <Button variant='primary' onClick={() => navigate({ createURL })}>
+              <Button variant='primary' onClick={() => nameUpdate(newName)}>
                 {'Create'}
               </Button>
             </div>

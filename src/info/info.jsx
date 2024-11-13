@@ -1,27 +1,30 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './info.css';
-import Footer from '../Footer';
-import Header from '../Header';
 
-export function Info(props) {
-  const [unsubscribeLink] = React.useState("index.html");
-  const [subNumber] = React.useState(0);
+export function Info() {
+  const [unsubscribeLink] = React.useState("../home/home.jsx");
+  const [subNumber, setSubNumber] = React.useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSubNumber(prevNumber => prevNumber + 1);
+    }, 2000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <section>
-      <Header />
 
-      <p className="p-5">Info about subscription</p>
+      <div className="p-5">Info about subscription</div>
 
-      <p className="p-5">{subNumber} people are already signed up!</p>
+      <div className="p-5">{subNumber} people are already signed up!</div>
 
       <div className="widget p-5">Interactive widget celebrating your sub</div>
 
-      <div style="flex-grow: 1; display: flex;">
-          <div style="align-self: end;">Would you like to unsubscribe? Click <a href={unsubscribeLink}>here</a></div>
+      <div style={{ flexGrow: 1, display: 'flex' }}>
+          <div style={{ alignSelf: 'end' }}>Would you like to unsubscribe? Click <a href={unsubscribeLink}>here</a></div>
       </div>
 
-      <Footer />
     </section>
   );
 }

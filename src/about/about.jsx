@@ -1,7 +1,5 @@
 import React from 'react';
 import './about.css';
-import Footer from '../Footer'
-import Header from '../Header'
 
 export function About() {
   const [authorPic] = React.useState("Author Pic.png");
@@ -9,13 +7,11 @@ export function About() {
 
   return (
     <section>
-      <Header />
-
       <h1 className="p-4">Meet the Author</h1>
 
       <div><img className="picture p-4" src={authorPic} alt="Author Profile Picture" width="250px" height="200px"/></div>
 
-      <div className="p-4" style="font-size: x-large; text-align: center;">
+      <div className="p-4" style={{ fontSize: 'x-large', textAlign: 'center' }}>
         <p>
           Info about the Author
         </p>
@@ -25,11 +21,9 @@ export function About() {
           <div>- Me</div>
         </div>
       </div>
-      <div style="font-size: x-large;">
+      <div style={{ fontSize: 'x-large' }}>
         Email me here: <a href={emailLink}>email</a>
       </div>
-
-      <Footer />
     </section>
   );
 }
