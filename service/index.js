@@ -2,9 +2,9 @@ const express = require('express');
 const uuid = require('uuid');
 const app = express();
 
-// The scores and users are saved in memory and disappear whenever the service is restarted.
+// The subscribers and users are saved in memory and disappear whenever the service is restarted.
 let users = {};
-let scores = [];
+let subscribers = [];
 
 // The service port. In production the front-end code is statically hosted by the service on the same port.
 const port = process.argv.length > 2 ? process.argv[2] : 3000;
@@ -54,15 +54,15 @@ apiRouter.delete('/auth/logout', (req, res) => {
   res.status(204).end();
 });
 
-// GetScores
-apiRouter.get('/scores', (_req, res) => {
-  res.send(scores);
+// GetSubscribers
+apiRouter.get('/subscribers', (_req, res) => {
+  res.send(subscribers);
 });
 
 // SubmitScore
-apiRouter.post('/score', (req, res) => {
-  scores = updateScores(req.body, scores);
-  res.send(scores);
+apiRouter.post('/newSubscriber', (req, res) => {
+  subscribers = updateSubs(req.body, subscribers);
+  res.send(subscribers);
 });
 
 // Return the application's default page if the path is unknown
@@ -74,24 +74,24 @@ app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
 
-// updateScores considers a new score for inclusion in the high scores.
-function updateScores(newScore, scores) {
+// updateSubs considers a new value for updating the subscriber count.
+function updateSubs(newSub, subscribers) {
   let found = false;
-  for (const [i, prevScore] of scores.entries()) {
-    if (newScore.score > prevScore.score) {
-      scores.splice(i, 0, newScore);
+  for (const [i, prevSubCount] of subscribers.entries()) {
+    if (newSub.sub > prevSubCount.sub) {
+      subscribers.splice(i, 0, newSub);
       found = true;
       break;
     }
   }
 
   if (!found) {
-    scores.push(newScore);
+    subscribers.push(newSub);
   }
 
-  if (scores.length > 10) {
-    scores.length = 10;
+  if (subscribers.length > 10) {
+    subscribers.length = 10;
   }
 
-  return scores;
+  return subscribers;
 }
