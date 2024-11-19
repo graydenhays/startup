@@ -64,9 +64,19 @@ For this deliverable I fully converted to React and added some Javascript functi
 - [x] **Components** - Footer, voting list, vote are all components with mocks for login, WebSocket.
   - [x] **login** - When you press the create button, the username in the top right corner will update.
   - [x] **database** - Displayed the subscriber count. Currently this is hard coded, but it will be replaced with the database data later. There are also input areas for user information.
-  - [x] **WebSocket** - I used the setInterval function to periodically increase the subscriber count. This will be replaced with WebSocket messages later.
-  - [x] **application logic** - The highlight and ranking number change based up the user's selections.
-- [x] **Router** - Routing between info and about components.
-- [x] **Hooks** - React uses `UseState` to track changes in the subscriber count.
+
+## Service deliverable
+
+I added backend endpoints that receive a user's information and returns the total number of subscribers.
+
+- [ ] **Node.js/Express HTTP service** - need to implement still
+- [ ] **Static middleware for frontend** - need to implement still
+- [ ] **Calls to third party endpoints** - need to implement still
+- [ ] **Backend service endpoints** - Placeholders for login that stores the current user on the server. Endpoints for subscriber count.
+- [ ] **Frontend calls service endpoints** - Use the fetch function?
+  - [ ] **WebSocket** - Use the setInterval function to increase the subscriber count periodically. This will be replaced with WebSocket messages later.
+  - [ ] **application logic** - Make highlighting and displayed data change based on the user input.
+- [ ] **Router** - Routing between info and about components.
+- [ ] **Hooks** - React uses `UseState` to track changes in the subscriber count.
 
 [Link to notes](https://github.com/graydenhays/startup/blob/main/notes.md)
