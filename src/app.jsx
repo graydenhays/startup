@@ -14,6 +14,7 @@ function App() {
   const updateName = (name) => {
     setName(name)
   }
+  const url = "mongodb+srv://cs260:cs260dbpassword@cluster0.dk5to.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
   return (
     <BrowserRouter>
       <div className='body text-light'>

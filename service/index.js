@@ -21,12 +21,12 @@ app.use(`/api`, apiRouter);
 
 // CreateAuth a new user
 apiRouter.post('/auth/create', async (req, res) => {
-  const user = users[req.body.email];
+  const user = users[req.body.username];
   if (user) {
     res.status(409).send({ msg: 'Existing user' });
   } else {
-    const user = { email: req.body.email, password: req.body.password, token: uuid.v4() };
-    users[user.email] = user;
+    const user = { username: req.body.username, password: req.body.password, token: uuid.v4() };
+    users[user.username] = user;
 
     res.send({ token: user.token });
   }
@@ -34,7 +34,7 @@ apiRouter.post('/auth/create', async (req, res) => {
 
 // GetAuth login an existing user
 apiRouter.post('/auth/login', async (req, res) => {
-  const user = users[req.body.email];
+  const user = users[req.body.username];
   if (user) {
     if (req.body.password === user.password) {
       user.token = uuid.v4();
@@ -74,6 +74,7 @@ app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
 
+//CHANGE THIS FUNCTION??? Could probably combine with users?
 // updateSubs considers a new value for updating the subscriber count.
 function updateSubs(newSub, subscribers) {
   let found = false;
@@ -89,9 +90,9 @@ function updateSubs(newSub, subscribers) {
     subscribers.push(newSub);
   }
 
-  if (subscribers.length > 10) {
-    subscribers.length = 10;
-  }
+  // if (subscribers.length > 10) {
+  //   subscribers.length = 10;
+  // }
 
   return subscribers;
 }
