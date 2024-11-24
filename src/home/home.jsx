@@ -10,7 +10,13 @@ export function Home({ nameUpdate }) {
   const [commentURL] = React.useState("../about/about.jsx");
   const [loginURL] = React.useState("../info/info.jsx");
   const [newName] = React.useState("New User");
-
+  // function handleClick() {
+  //   fetch('TODO => Add api route here')
+  //     .then((response) => response.json())
+  //     .then((TODOputsomethinghere) => {
+  //       //setSomething();
+  //     })
+  // }
   return (
     <section>
       {/* <Header /> */}

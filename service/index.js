@@ -4,7 +4,7 @@ const app = express();
 
 // The subscribers and users are saved in memory and disappear whenever the service is restarted.
 let users = {};
-let subscribers = [];
+let subscribers = {"numSubs": 1000};
 
 // The service port. In production the front-end code is statically hosted by the service on the same port.
 const port = process.argv.length > 2 ? process.argv[2] : 3000;
