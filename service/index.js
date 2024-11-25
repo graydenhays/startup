@@ -66,8 +66,16 @@ apiRouter.post('/newSubscriber', (req, res) => {
 });
 
 // Return the application's default page if the path is unknown
-app.use((_req, res) => {
-  res.sendFile('index.html', { root: 'public' });
+// app.use((_req, res) => {
+//   res.sendFile('index.html', { root: 'public' });
+// });
+
+app.use((req, res) => {
+  if (req.path.startsWith('/api')) {
+    res.status(404).send({ error: 'Not Found' });
+  } else {
+    res.sendFile('index.html', { root: 'public' });
+  }
 });
 
 app.listen(port, () => {

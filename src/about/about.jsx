@@ -1,9 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './about.css';
 
 export function About() {
   const [authorPic] = React.useState("Author Pic.png");
   const [emailLink] = React.useState("index.html");
+  const [quote, setQuote] = React.useState("");
+
+  useEffect(() => {
+    async function fetchQuote() {
+      try {
+        const response = await fetch('https://perl.is/random');
+        const quotes = await response.json();
+        setQuote(quotes);
+      }
+      catch (error) {
+        console.error('Error fetching quote:', error);
+      }
+    }
+  })
 
   return (
     <section>
@@ -18,10 +32,10 @@ export function About() {
         <div className="p-4"></div>
         <div className="quote p-5">
           <div>
-            Phasellus malesuada ligula magna, vitae hendrerit eros feugiat pulvinar. Nunc laoreet nibh eu felis interdum porttitor. Etiam ut ex ac eros faucibus venenatis sed vitae nisi. Vestibulum vitae rhoncus leo. Sed risus nisl, volutpat at turpis quis, facilisis lobortis magna. Nunc non lacinia tellus. Nam pretium nulla erat, in consectetur massa imperdiet id. Integer ac viverra nulla, non feugiat odio. Curabitur vel dui sed leo mollis vehicula a at sapien. Aliquam rutrum arcu id velit tincidunt, ultrices interdum mauris dignissim. Vivamus bibendum dignissim ipsum nec pretium. Suspendisse potenti.
+            {quote ? quote.quote : ""}
           </div>
           <div>
-            - Me
+            - Alan Perlis
           </div>
         </div>
       </div>
