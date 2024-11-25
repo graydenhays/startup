@@ -5,18 +5,22 @@ export function About() {
   const [authorPic] = React.useState("Author Pic.png");
   const [emailLink] = React.useState("index.html");
   const [quote, setQuote] = React.useState("");
-
+  let [quoteIsSet, preventQuote] = React.useState(false);
   useEffect(() => {
     async function fetchQuote() {
       try {
-        const response = await fetch('https://perl.is/random');
-        const quotes = await response.json();
-        setQuote(quotes);
+        if(!quoteIsSet) {
+          const response = await fetch('https://perl.is/random');
+          const quotes = await response.json();
+          setQuote(quotes);
+          preventQuote(true);
+        }
       }
       catch (error) {
         console.error('Error fetching quote:', error);
       }
     }
+    fetchQuote();
   })
 
   return (
@@ -32,7 +36,7 @@ export function About() {
         <div className="p-4"></div>
         <div className="quote p-5">
           <div>
-            {quote ? quote.quote : ""}
+            "{quote ? quote.quote : ""}"
           </div>
           <div>
             - Alan Perlis
