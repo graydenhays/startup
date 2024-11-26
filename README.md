@@ -69,14 +69,14 @@ For this deliverable I fully converted to React and added some Javascript functi
 
 I added backend endpoints that receive a user's information and returns the total number of subscribers.
 
-- [ ] **Node.js/Express HTTP service** - need to implement still
-- [ ] **Static middleware for frontend** - need to implement still
-- [ ] **Calls to third party endpoints** - need to implement still
-- [ ] **Backend service endpoints** - Placeholders for login that stores the current user on the server. Endpoints for subscriber count.
-- [ ] **Frontend calls service endpoints** - Use the fetch function?
-  - [ ] **WebSocket** - Use the setInterval function to increase the subscriber count periodically. This will be replaced with WebSocket messages later.
-  - [ ] **application logic** - Make highlighting and displayed data change based on the user input.
-- [ ] **Router** - Routing between info and about components.
-- [ ] **Hooks** - React uses `UseState` to track changes in the subscriber count.
+- [x] **Node.js/Express HTTP service** - done
+- [x] **Static middleware for frontend** - done
+- [x] **Calls to third party endpoints** - Grabs computer science quotes from a third party api for the about page.
+- [x] **Backend service endpoints** - Placeholders for login that stores the current user on the server. Endpoints for subscriber count.
+- [x] **Frontend calls service endpoints** - Use the fetch function?
+  - [x] **WebSocket** - The subscriber count will eventually be used with WebSocket so that each time someone signs up, the count increments. Currently uses the api to get the value.
+  - [x] **application logic** - Updates username after clicking create button.
+- [x] **Router** - Routing between home, info, and about components.
+- [x] **Hooks** - React uses `UseState` to track changes in the subscriber count, links, and pictures.
 
 [Link to notes](https://github.com/graydenhays/startup/blob/main/notes.md)
