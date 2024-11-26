@@ -10,17 +10,11 @@ export function Home({ nameUpdate }) {
   const [commentURL] = React.useState("../about/about.jsx");
   const [loginURL] = React.useState("../info/info.jsx");
   const [newName] = React.useState("New User");
-  // function handleClick() {
-  //   fetch('TODO => Add api route here')
-  //     .then((response) => response.json())
-  //     .then((TODOputsomethinghere) => {
-  //       //setSomething();
-  //     })
-  // }
+  function navigate(url) {
+    console.log("Navigate to other page")
+  }
   return (
     <section>
-      {/* <Header /> */}
-
       <main>
         <h1 className="p-4">Home Page</h1>
         {/* Slideshow */}
@@ -81,8 +75,6 @@ export function Home({ nameUpdate }) {
           </Form>
         </div>
       </main>
-
-      {/* <Footer /> */}
     </section>
   );
 }

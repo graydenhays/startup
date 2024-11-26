@@ -16,7 +16,7 @@ export function Info() {
       .then((subscribers) => {
         console.log(subscribers);
         console.log(subscribers.numSubs);
-        setSubNumber(subscribers.numSubs)
+        setSubNumber(subscribers.numSubs);
       })
       .catch((error) => {
         console.error('Error fetching subscribers:', error);
