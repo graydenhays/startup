@@ -14,7 +14,7 @@ function App() {
   const updateName = (name) => {
     setName(name)
   }
-  const url = "mongodb+srv://cs260:cs260dbpassword@cluster0.dk5to.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+  const dbUrl = "mongodb+srv://cs260:cs260dbpassword@cluster0.dk5to.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
   return (
     <BrowserRouter>
       <div className='body text-light'>
@@ -51,7 +51,8 @@ function App() {
 
 
         <Routes>
-          <Route path='/' element={<Home nameUpdate={updateName}/>} /> {/* The Home component is the problem */}
+          <Route path='/' element={<Home nameUpdate={updateName}/>} />
+          {/* Add props to home component to mock the login from simon */}
           <Route path='/info' element={<Info />} />
           <Route path='/about' element={<About />} />
           <Route path='*' element={<NotFound />} />
