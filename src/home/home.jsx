@@ -1,8 +1,11 @@
 import React from 'react';
 import './home.css';
 import { Button, Card, Form, FormControl } from 'react-bootstrap';
+import { Unauthenticated } from './unauthenticated';
+import { Authenticated } from './authenticated';
+import { AuthState } from './authState';
 
-export function Home({ nameUpdate }) {
+export function Home({ nameUpdate, authState, onAuthChange }) {
   const [image1Url] = React.useState(`merlin's dragon.jpg`);
   const [image2Url] = React.useState(`gregor the overlander.jpg`);
   const [image3Url] = React.useState(`the-way-of-kings-by-brandon-sanderson.png`);
@@ -73,6 +76,22 @@ export function Home({ nameUpdate }) {
               </Button>
             </div>
           </Form>
+        </div>
+
+        {/* Simon login */}
+        <div>
+          {authState !== AuthState.Unknown && <h1>Welcome to Simon</h1>}
+          {authState === AuthState.Authenticated && (
+            <Authenticated userName={userName} onLogout={() => onAuthChange(userName, AuthState.Unauthenticated)} />
+          )}
+          {authState === AuthState.Unauthenticated && (
+            <Unauthenticated
+              userName={userName}
+              onLogin={(loginUserName) => {
+                onAuthChange(loginUserName, AuthState.Authenticated);
+              }}
+            />
+          )}
         </div>
       </main>
     </section>

@@ -4,16 +4,19 @@ import { Image } from 'react-bootstrap';
 import { Info } from './info/info';
 import { Home } from './home/home';
 import { About } from './about/about';
+import { AuthState } from './home/authState';
 import Footer from './Footer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.css';
 
 function App() {
-  const [profileName, setName] = React.useState("**enter profile name here**");
+  const [userName, setUserName] = React.useState(localStorage.getItem('userName') || 'NewUser');
+  const currentAuthState = userName ? AuthState.Authenticated : AuthState.Unauthenticated;
+  const [authState, setAuthState] = React.useState(currentAuthState);
   const [userIcon] = React.useState("../public/user_icon.jpg");
-  const updateName = (name) => {
-    setName(name)
-  }
+  // const updateName = (name) => {
+  //   setName(name)
+  // }
   const dbUrl = "mongodb+srv://cs260:cs260dbpassword@cluster0.dk5to.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
   return (
     <BrowserRouter>
@@ -44,14 +47,26 @@ function App() {
             </div>
             <div className="d-flex flex-row p-2">
               <Image className="me-2" src={userIcon} alt="User Icon" width="30px" height="30px" />
-              <p>Hello {profileName}!</p>
+              <p>Hello {userName}!</p>
             </div>
           </nav>
         </header>
 
 
         <Routes>
-          <Route path='/' element={<Home nameUpdate={updateName}/>} />
+          <Route
+            path='/'
+            element={
+              <Home
+                userName={userName}
+                authState={authState}
+                onAuthChange={(userName, authState) => {
+                  setAuthState(authState);
+                  setUserName(userName);
+                }}
+              />
+            }
+          />
           {/* Add props to home component to mock the login from simon */}
           <Route path='/info' element={<Info />} />
           <Route path='/about' element={<About />} />
