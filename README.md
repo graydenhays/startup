@@ -79,4 +79,15 @@ I added backend endpoints that receive a user's information and returns the tota
 - [x] **Router** - Routing between home, info, and about components.
 - [x] **Hooks** - React uses `UseState` to track changes in the subscriber count, links, and pictures.
 
+## DB/Login deliverable
+
+For this deliverable I increment the subscriber count with the logged in user. This user can choose to unsubscribe or resubscribe. I stored the users and the subscriber count in the database.
+
+- [x] **MongoDB Atlas database created** - done!
+- [x] **Stores data in MongoDB** - done!
+- [x] **User registration** - Creates a new account in the database.
+- [x] **existing user** - Stores the subscribed status under the same user if the user already exists.
+- [x] **Use MongoDB to store credentials** - Stores both user and their subscribed status.
+- [x] **Restricts functionality** - You cannot login until you have created an account. You cannot navigate to the info page where you can edit the subscriber count until you have been logged in.
+
 [Link to notes](https://github.com/graydenhays/startup/blob/main/notes.md)
