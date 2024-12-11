@@ -11,13 +11,8 @@ export function Home({ userName, authState, onAuthChange }) {
   const [image3Url] = React.useState(`the-way-of-kings-by-brandon-sanderson.png`);
   const [bookDesc] = React.useState('Brief description of current book on slide');
   const [commentURL] = React.useState("../about/about.jsx");
-  const [loginURL] = React.useState("../info/info.jsx");
-  const [newName] = React.useState("New User");
   function navigate(url) {
     console.log("Navigate to other page")
-  }
-  function logIn() {
-
   }
   return (
     <section>
@@ -57,31 +52,7 @@ export function Home({ userName, authState, onAuthChange }) {
           </div>
         </div>
 
-        {/* Sign up */}
-        {/* <div className="p-5 d-flex flex-column">
-          <h5>Sign up for monthly updates!</h5>
-          <Form method="get" action="info.html">
-            <Form.Group className="p-2">
-              <Form.Label>@</Form.Label>
-              <FormControl type="text" placeholder="your@email.com" />
-            </Form.Group>
-            <Form.Group>
-              <Form.Label>🔒</Form.Label>
-              <FormControl type="password" placeholder="password" />
-            </Form.Group>
-
-            <div className="p-2" style={{ display: 'flex', justifyContent: 'end' }}>
-              <Button variant='primary' onClick={() => navigate({ loginURL })}>
-                {'Login'}
-              </Button>
-              <Button variant='primary' onClick={() => nameUpdate(newName)}>
-                {'Create'}
-              </Button>
-            </div>
-          </Form>
-        </div> */}
-
-        {/* Simon login */}
+        {/* Login */}
         <div>
           {authState !== AuthState.Unknown && <h5>Sign up for monthly updates!</h5>}
           {authState === AuthState.Authenticated && (
