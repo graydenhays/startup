@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { SubscriberEvent, SubNotifier } from './subscriberNotifier';
 import './info.css';
 
 export function Info() {
@@ -17,10 +18,15 @@ export function Info() {
       }
       const result = await response.json();
       if (result) {
-        setDisplayError(''); // Clear any previous errors
+        setDisplayError('');
         alert(`You have been ${isSubscribed ? 'unsubscribed' : 'subscribed'} successfully`);
         setIsSubscribed(!isSubscribed);
         setSubNumber(prevNumber => isSubscribed ? prevNumber - 1 : prevNumber + 1);
+        if (isSubscribed) {
+          SubNotifier.notifyUnsubscribe();
+        } else {
+          SubNotifier.notifySubscribe();
+        }
       } else {
         setDisplayError(`⚠ ${isSubscribed ? 'Unsubscribe' : 'Subscribe'} failed. Please try again.`);
       }
@@ -31,12 +37,22 @@ export function Info() {
   };
 
   useEffect(() => {
+    const handleSubscriberUpdate = (event) => {
+      if (event.type === SubscriberEvent.CountUpdate) {
+        setSubNumber(event.value.count);
+      }
+    };
+
+    SubNotifier.addHandler(handleSubscriberUpdate);
+
+    SubNotifier.getSubscriberCount();
+
     fetch('/api/subscribers')
       .then((response) => {
         if (!response.ok) {
           throw new Error(`Error getting subscribers: ${response.status}`);
         }
-        return response.json()
+        return response.json();
       })
       .then((subscribers) => {
         console.log(subscribers.count);
@@ -45,8 +61,13 @@ export function Info() {
       .catch((error) => {
         console.error('Error fetching subscribers:', error);
         setDisplayError(`⚠ Error fetching subscribers: ${error.message}`);
-      })
+      });
+
+    return () => {
+      SubNotifier.removeHandler(handleSubscriberUpdate);
+    };
   }, []);
+
 
   return (
     <section>
