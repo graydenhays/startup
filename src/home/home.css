@@ -70,6 +70,27 @@ footer span {
   float: right;
 }
 
+.slideshow-container {
+  position: relative;
+  max-width: 100%;
+  margin: auto;
+}
+
+.slide {
+  display: none;
+}
+
+.slide.active {
+  display: block;
+}
+
+.slideshow-image {
+  width: 50%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
 @media (max-height: 300px) {
   header {
     display: none;

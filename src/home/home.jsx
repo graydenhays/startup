@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import './home.css';
 import { Button, Card, Form, FormControl } from 'react-bootstrap';
 import { Unauthenticated } from './unauthenticated';
@@ -6,10 +6,36 @@ import { Authenticated } from './authenticated';
 import { AuthState } from './authState';
 
 export function Home({ userName, authState, onAuthChange }) {
-  const [image1Url] = React.useState(`merlin's dragon.jpg`);
-  const [image2Url] = React.useState(`gregor the overlander.jpg`);
-  const [image3Url] = React.useState(`the-way-of-kings-by-brandon-sanderson.png`);
-  const [bookDesc] = React.useState('Brief description of current book on slide');
+  const [index, setIndex] = useState(0);
+  const images = [
+    {
+      url: `merlin's dragon.jpg`,
+      alt: "Merlin's Dragon",
+      description: "Brief description of Merlin's Dragon"
+    },
+    {
+      url: `gregor the overlander.jpg`,
+      alt: "Gregor the Overlander",
+      description: "Brief description of Gregor the Overlander"
+    },
+    {
+      url: `the-way-of-kings-by-brandon-sanderson.png`,
+      alt: "The Way of Kings",
+      description: "Brief description of The Way of Kings"
+    }
+  ]
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [images.length]);
+
+  // const [image1Url] = React.useState(`merlin's dragon.jpg`);
+  // const [image2Url] = React.useState(`gregor the overlander.jpg`);
+  // const [image3Url] = React.useState(`the-way-of-kings-by-brandon-sanderson.png`);
+  // const [bookDesc] = React.useState('Brief description of current book on slide');
   const [commentURL] = React.useState("../about/about.jsx");
   function navigate(url) {
     console.log("Navigate to other page")
@@ -19,14 +45,18 @@ export function Home({ userName, authState, onAuthChange }) {
       <main>
         <h1 className="p-4">Home Page</h1>
         {/* Slideshow */}
-        <div>
-          <div>
-            <img className="slideshow" src={image1Url} alt="Merlin's Dragon" />
-            <img className="slideshow" src={image2Url} alt="Code of the Claw" />
-            <img className="slideshow" src={image3Url} alt="Way of Kings" />
-          </div>
+        <div className='slideshow-container'>
+          {images.map((image, i) => (
+            <div
+              key={i}
+              className={`slide ${i === index ? 'active' : ''}`}
+              style={{ display: i === index ? 'block' : 'none' }}
+            >
+              <img src={image.url} alt={image.alt} className="slideshow-image" />
+            </div>
+          ))}
           <p style={{ fontSize: '1.5rem' }} className="d-flex justify-content-center p-4">
-            {bookDesc}
+            {images[index].description}
           </p>
         </div>
 
