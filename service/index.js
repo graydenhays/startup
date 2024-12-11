@@ -4,10 +4,9 @@ const app = express();
 const DB = require('./database.js');
 const cookieParser = require('cookie-parser');
 const bcrypt = require('bcrypt');
+const { peerProxy } = require('./peerProxy.js');
 
 // The subscribers and users are saved in memory and disappear whenever the service is restarted.
-// let users = {};
-// let subscribers = {"numSubs": 1};
 const authCookieName = 'token';
 
 // The service port. In production the front-end code is statically hosted by the service on the same port.
@@ -21,7 +20,7 @@ app.use(express.static('public'));
 app.set('trust proxy', true);
 
 // Router for service endpoints
-var apiRouter = express.Router();
+const apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
 // CreateAuth a new user
@@ -72,7 +71,6 @@ secureApiRouter.use(async (req, res, next) => {
   }
 });
 
-
 // GetSubscribers
 secureApiRouter.get('/subscribers', async (_req, res) => {
   console.log("In Subscribers");
@@ -119,6 +117,8 @@ function setAuthCookie(res, authToken) {
   });
 }
 
-app.listen(port, () => {
+const httpService = app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
+
+peerProxy(httpService);
