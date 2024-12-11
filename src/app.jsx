@@ -14,7 +14,6 @@ function App() {
   const currentAuthState = userName ? AuthState.Authenticated : AuthState.Unauthenticated;
   const [authState, setAuthState] = React.useState(currentAuthState);
   const [userIcon] = React.useState("../public/user_icon.jpg");
-  const dbUrl = "mongodb+srv://cs260:cs260dbpassword@cluster0.dk5to.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
   return (
     <BrowserRouter>
       <div className='body text-light'>
@@ -30,11 +29,13 @@ function App() {
                     Home
                   </NavLink>
                 </li>
-                <li className='nav-item'>
-                  <NavLink className='nav-link' to='info'>
-                    Info
-                  </NavLink>
-                </li>
+                {authState === AuthState.Authenticated && (
+                  <li className='nav-item'>
+                    <NavLink className='nav-link' to='info'>
+                      Info
+                    </NavLink>
+                  </li>
+                )}
                 <li className='nav-item'>
                   <NavLink className='nav-link' to='about'>
                     About
