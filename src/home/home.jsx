@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import './home.css';
-import { Button, Card, Form, FormControl } from 'react-bootstrap';
 import { Unauthenticated } from './unauthenticated';
 import { Authenticated } from './authenticated';
 import { AuthState } from './authState';
@@ -32,14 +31,6 @@ export function Home({ userName, authState, onAuthChange }) {
     return () => clearInterval(interval);
   }, [images.length]);
 
-  // const [image1Url] = React.useState(`merlin's dragon.jpg`);
-  // const [image2Url] = React.useState(`gregor the overlander.jpg`);
-  // const [image3Url] = React.useState(`the-way-of-kings-by-brandon-sanderson.png`);
-  // const [bookDesc] = React.useState('Brief description of current book on slide');
-  const [commentURL] = React.useState("../about/about.jsx");
-  function navigate(url) {
-    console.log("Navigate to other page")
-  }
   return (
     <section>
       <main>
@@ -61,26 +52,6 @@ export function Home({ userName, authState, onAuthChange }) {
         </div>
 
         <hr />
-
-        {/* Comments */}
-        <div className="d-flex flex-column p-4">
-          <h3 className="d-flex justify-content-center">Reviews</h3>
-          <Card className="p-2">
-            <Card.Body>Comment #1</Card.Body>
-          </Card>
-          <Card className="p-2">
-            <Card.Body>Comment #2</Card.Body>
-          </Card>
-          <Card className="p-2">
-            <Card.Body>Comment #3</Card.Body>
-          </Card>
-          <div className='d-flex'>
-            <FormControl type="text" placeholder="Add comment here..." />
-            <Button variant='primary' onClick={() => navigate({ commentURL })}>
-              {'Add Comment'}
-            </Button>
-          </div>
-        </div>
 
         {/* Login */}
         <div>
