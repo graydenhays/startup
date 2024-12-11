@@ -1,5 +1,6 @@
 const { WebSocketServer } = require('ws');
 const uuid = require('uuid');
+const DB = require('./database.js');
 
 function peerProxy(httpServer) {
   // Create a websocket object
@@ -20,7 +21,29 @@ function peerProxy(httpServer) {
     connections.push(connection);
 
     // Forward messages to everyone except the sender
-    ws.on('message', function message(data) {
+    ws.on('message', async function message(data) {
+      const event = JSON.parse(data);
+
+      // Handle subscriber count request
+      if (event.type === 'subscriberUpdate' && event.value.action === 'request') {
+        const count = await DB.getSubscriberCount();
+        ws.send(JSON.stringify({ type: 'subscriberUpdate', value: { count } }));
+      }
+
+      // Handle subscribe event
+      if (event.type === 'subscribe') {
+        await DB.incrementSubscribers();
+        const newCount = await DB.getSubscriberCount();
+        broadcastToAllClients({ type: 'subscriberUpdate', value: { count: newCount } });
+      }
+
+      // Handle unsubscribe event
+      if (event.type === 'unsubscribe') {
+        await DB.decrementSubscribers();
+        const newCount = await DB.getSubscriberCount();
+        broadcastToAllClients({ type: 'subscriberUpdate', value: { count: newCount } });
+      }
+
       connections.forEach((c) => {
         if (c.id !== connection.id) {
           c.ws.send(data);
@@ -55,6 +78,12 @@ function peerProxy(httpServer) {
       }
     });
   }, 10000);
+
+  function broadcastToAllClients(message) {
+    connections.forEach((c) => {
+      c.ws.send(JSON.stringify(message));
+    });
+  }
 }
 
 module.exports = { peerProxy };
