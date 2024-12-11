@@ -43,9 +43,6 @@ export function About() {
           </div>
         </div>
       </div>
-      <div style={{ fontSize: 'x-large' }}>
-        Email me here: <a href={emailLink}>email</a>
-      </div>
     </section>
   );
 }
