@@ -2,43 +2,34 @@ import React, { useState, useEffect } from 'react';
 import './info.css';
 
 export function Info() {
-  const [subNumber, setSubNumber] = React.useState(0);
-  const handleUnsubscribe = async () => {
+  const [subNumber, setSubNumber] = useState(0);
+  const [isSubscribed, setIsSubscribed] = useState(true);
+  const [displayError, setDisplayError] = useState('');
+
+  const handleSubscriptionToggle = async () => {
     try {
-      const response = await fetch('/api/removeSubscriber', {
+      const endpoint = isSubscribed ? '/api/removeSubscriber' : '/api/newSubscriber';
+      const response = await fetch(endpoint, {
         method: 'POST',
       });
       if (!response.ok) {
-        throw new Error(`Error unsubscribing: ${response.status}`);
+        throw new Error(`Error ${isSubscribed ? 'unsubscribing' : 'subscribing'}: ${response.status}`);
       }
       const result = await response.json();
       if (result) {
-        alert('You have been unsubscribed successfully');
-        // Optionally, update the subscriber count
-        setSubNumber(prevNumber => prevNumber - 1);
+        setDisplayError(''); // Clear any previous errors
+        alert(`You have been ${isSubscribed ? 'unsubscribed' : 'subscribed'} successfully`);
+        setIsSubscribed(!isSubscribed);
+        setSubNumber(prevNumber => isSubscribed ? prevNumber - 1 : prevNumber + 1);
       } else {
-        alert('Unsubscribe failed. Please try again.');
+        setDisplayError(`⚠ ${isSubscribed ? 'Unsubscribe' : 'Subscribe'} failed. Please try again.`);
       }
     } catch (error) {
-      console.error('Error while unsubscribing:', error);
-      alert('An error occurred while unsubscribing. Please try again.');
+      console.error(`Error while ${isSubscribed ? 'unsubscribing' : 'subscribing'}:`, error);
+      setDisplayError(`⚠ An error occurred while ${isSubscribed ? 'unsubscribing' : 'subscribing'}: ${error.message}`);
     }
   };
-  async function createSubscriber() {
-    const response = await fetch(`/api/newSubscriber`, {
-      method: 'post',
-      // body: JSON.stringify({ email: userName, password: password }),
-      // headers: {
-      //   'Content-type': 'application/json; charset=UTF-8',
-      // },
-    });
-    if (response?.status === 200) {
 
-    } else {
-      const body = await response.json();
-      setDisplayError(`⚠ Error with subscribing: ${body.msg}`);
-    }
-  }
   useEffect(() => {
     fetch('/api/subscribers')
       .then((response) => {
@@ -53,17 +44,12 @@ export function Info() {
       })
       .catch((error) => {
         console.error('Error fetching subscribers:', error);
+        setDisplayError(`⚠ Error fetching subscribers: ${error.message}`);
       })
-
-    // const interval = setInterval(() => {
-    //   setSubNumber(prevNumber => prevNumber + 1);
-    // }, 2000);
-    // return () => clearInterval(interval);
   }, []);
 
   return (
     <section>
-
       <div className="p-5">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam viverra, libero non sollicitudin bibendum, dui ligula ullamcorper nulla, ut volutpat ex nulla ut mauris. Fusce venenatis et nisl quis rutrum. Duis finibus dignissim ex, quis mattis nisl ultrices eu. In et mollis est, et condimentum dolor. Integer faucibus accumsan ipsum, et mattis urna egestas id. Phasellus sed ullamcorper orci. Sed venenatis risus quis nunc aliquam vehicula. Curabitur a aliquet arcu. Nullam nec tempor turpis. Cras ut euismod quam. Nullam a nulla quis sem pulvinar lobortis in in mi.
         <br/><br/>
@@ -76,11 +62,14 @@ export function Info() {
 
       <div style={{ flexGrow: 1, display: 'flex' }}>
         <div style={{ alignSelf: 'end' }}>
-          Would you like to unsubscribe?
-          <button onClick={handleUnsubscribe}>Click here</button>
+          Would you like to {isSubscribed ? 'unsubscribe' : 'subscribe'}?
+          <button onClick={handleSubscriptionToggle}>
+            {isSubscribed ? 'Unsubscribe' : 'Subscribe'}
+          </button>
         </div>
       </div>
 
+      {displayError && <div className="error">{displayError}</div>}
     </section>
   );
 }
