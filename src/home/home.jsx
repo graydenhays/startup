@@ -5,7 +5,7 @@ import { Unauthenticated } from './unauthenticated';
 import { Authenticated } from './authenticated';
 import { AuthState } from './authState';
 
-export function Home({ nameUpdate, authState, onAuthChange }) {
+export function Home({ userName, authState, onAuthChange }) {
   const [image1Url] = React.useState(`merlin's dragon.jpg`);
   const [image2Url] = React.useState(`gregor the overlander.jpg`);
   const [image3Url] = React.useState(`the-way-of-kings-by-brandon-sanderson.png`);
@@ -15,6 +15,9 @@ export function Home({ nameUpdate, authState, onAuthChange }) {
   const [newName] = React.useState("New User");
   function navigate(url) {
     console.log("Navigate to other page")
+  }
+  function logIn() {
+
   }
   return (
     <section>
@@ -55,7 +58,7 @@ export function Home({ nameUpdate, authState, onAuthChange }) {
         </div>
 
         {/* Sign up */}
-        <div className="p-5 d-flex flex-column">
+        {/* <div className="p-5 d-flex flex-column">
           <h5>Sign up for monthly updates!</h5>
           <Form method="get" action="info.html">
             <Form.Group className="p-2">
@@ -76,13 +79,16 @@ export function Home({ nameUpdate, authState, onAuthChange }) {
               </Button>
             </div>
           </Form>
-        </div>
+        </div> */}
 
         {/* Simon login */}
         <div>
-          {authState !== AuthState.Unknown && <h1>Welcome to Simon</h1>}
+          {authState !== AuthState.Unknown && <h5>Sign up for monthly updates!</h5>}
           {authState === AuthState.Authenticated && (
-            <Authenticated userName={userName} onLogout={() => onAuthChange(userName, AuthState.Unauthenticated)} />
+            <Authenticated
+              userName={userName}
+              onLogout={() => onAuthChange(userName, AuthState.Unauthenticated)}
+            />
           )}
           {authState === AuthState.Unauthenticated && (
             <Unauthenticated

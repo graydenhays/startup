@@ -10,13 +10,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.css';
 
 function App() {
-  const [userName, setUserName] = React.useState(localStorage.getItem('userName') || 'NewUser');
+  const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
   const currentAuthState = userName ? AuthState.Authenticated : AuthState.Unauthenticated;
   const [authState, setAuthState] = React.useState(currentAuthState);
   const [userIcon] = React.useState("../public/user_icon.jpg");
-  // const updateName = (name) => {
-  //   setName(name)
-  // }
   const dbUrl = "mongodb+srv://cs260:cs260dbpassword@cluster0.dk5to.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
   return (
     <BrowserRouter>
@@ -47,7 +44,7 @@ function App() {
             </div>
             <div className="d-flex flex-row p-2">
               <Image className="me-2" src={userIcon} alt="User Icon" width="30px" height="30px" />
-              <p>Hello {userName}!</p>
+              {userName ? <p>Hello {userName}!</p> : <p>Please sign in.</p>}
             </div>
           </nav>
         </header>
@@ -67,7 +64,6 @@ function App() {
               />
             }
           />
-          {/* Add props to home component to mock the login from simon */}
           <Route path='/info' element={<Info />} />
           <Route path='/about' element={<About />} />
           <Route path='*' element={<NotFound />} />

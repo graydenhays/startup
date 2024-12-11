@@ -2,9 +2,43 @@ import React, { useState, useEffect } from 'react';
 import './info.css';
 
 export function Info() {
-  const [unsubscribeLink] = React.useState("../home/home.jsx");
   const [subNumber, setSubNumber] = React.useState(0);
+  const handleUnsubscribe = async () => {
+    try {
+      const response = await fetch('/api/removeSubscriber', {
+        method: 'POST',
+      });
+      if (!response.ok) {
+        throw new Error(`Error unsubscribing: ${response.status}`);
+      }
+      const result = await response.json();
+      if (result) {
+        alert('You have been unsubscribed successfully');
+        // Optionally, update the subscriber count
+        setSubNumber(prevNumber => prevNumber - 1);
+      } else {
+        alert('Unsubscribe failed. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error while unsubscribing:', error);
+      alert('An error occurred while unsubscribing. Please try again.');
+    }
+  };
+  async function createSubscriber() {
+    const response = await fetch(`/api/newSubscriber`, {
+      method: 'post',
+      // body: JSON.stringify({ email: userName, password: password }),
+      // headers: {
+      //   'Content-type': 'application/json; charset=UTF-8',
+      // },
+    });
+    if (response?.status === 200) {
 
+    } else {
+      const body = await response.json();
+      setDisplayError(`⚠ Error with subscribing: ${body.msg}`);
+    }
+  }
   useEffect(() => {
     fetch('/api/subscribers')
       .then((response) => {
@@ -14,9 +48,8 @@ export function Info() {
         return response.json()
       })
       .then((subscribers) => {
-        console.log(subscribers);
-        console.log(subscribers.numSubs);
-        setSubNumber(subscribers.numSubs);
+        console.log(subscribers.count);
+        setSubNumber(subscribers.count);
       })
       .catch((error) => {
         console.error('Error fetching subscribers:', error);
@@ -42,7 +75,10 @@ export function Info() {
       <div className="widget p-5">Interactive widget celebrating your sub</div>
 
       <div style={{ flexGrow: 1, display: 'flex' }}>
-          <div style={{ alignSelf: 'end' }}>Would you like to unsubscribe? Click <a href={unsubscribeLink}>here</a></div>
+        <div style={{ alignSelf: 'end' }}>
+          Would you like to unsubscribe?
+          <button onClick={handleUnsubscribe}>Click here</button>
+        </div>
       </div>
 
     </section>
