@@ -77,11 +77,9 @@ export function Info() {
         Phasellus malesuada ligula magna, vitae hendrerit eros feugiat pulvinar. Nunc laoreet nibh eu felis interdum porttitor. Etiam ut ex ac eros faucibus venenatis sed vitae nisi. Vestibulum vitae rhoncus leo. Sed risus nisl, volutpat at turpis quis, facilisis lobortis magna. Nunc non lacinia tellus. Nam pretium nulla erat, in consectetur massa imperdiet id. Integer ac viverra nulla, non feugiat odio. Curabitur vel dui sed leo mollis vehicula a at sapien. Aliquam rutrum arcu id velit tincidunt, ultrices interdum mauris dignissim. Vivamus bibendum dignissim ipsum nec pretium. Suspendisse potenti.
       </div>
 
-      <div className="p-5">{subNumber} people are already signed up!</div>
+      <div className="p-5 fs-3">{subNumber} people are already signed up!</div>
 
-      <div className="widget p-5">Interactive widget celebrating your sub</div>
-
-      <div style={{ flexGrow: 1, display: 'flex' }}>
+      <div className='p-5' style={{ flexGrow: 1, display: 'flex' }}>
         <div style={{ alignSelf: 'end' }}>
           Would you like to {isSubscribed ? 'unsubscribe' : 'subscribe'}?
           <button onClick={handleSubscriptionToggle}>

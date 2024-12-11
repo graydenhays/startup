@@ -1,5 +1,4 @@
 const express = require('express');
-// const uuid = require('uuid');
 const app = express();
 const DB = require('./database.js');
 const cookieParser = require('cookie-parser');
@@ -75,14 +74,12 @@ secureApiRouter.use(async (req, res, next) => {
 secureApiRouter.get('/subscribers', async (_req, res) => {
   console.log("In Subscribers");
   const subscribers = await DB.getSubscriberCount();
-  // res.send(subscribers);
   res.json({ count: subscribers });
 });
 
 // newSubscriber
 secureApiRouter.post('/newSubscriber', async (req, res) => {
   const successfulAdd = await DB.incrementSubscribers();
-  // subscribers.numSubs += 1;
   res.send(successfulAdd);
 });
 
