@@ -88,6 +88,6 @@ For this deliverable I increment the subscriber count with the logged in user. T
 - [x] **User registration** - Creates a new account in the database.
 - [x] **existing user** - Stores the subscribed status under the same user if the user already exists.
 - [x] **Use MongoDB to store credentials** - Stores both user and their subscribed status.
-- [x] **Restricts functionality** - You cannot login until you have created an account. You cannot edit the subscriber count until you have been logged in.
+- [x] **Restricts functionality** - You cannot login until you have created an account. You cannot navigate to the info page where you can edit the subscriber count until you have been logged in.
 
 [Link to notes](https://github.com/graydenhays/startup/blob/main/notes.md)
