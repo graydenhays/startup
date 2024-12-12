@@ -5,20 +5,14 @@ const cookieParser = require('cookie-parser');
 const bcrypt = require('bcrypt');
 const { peerProxy } = require('./peerProxy.js');
 
-// The subscribers and users are saved in memory and disappear whenever the service is restarted.
 const authCookieName = 'token';
-
-// The service port. In production the front-end code is statically hosted by the service on the same port.
 const port = process.argv.length > 2 ? process.argv[2] : 3000;
 
-// JSON body parsing using built-in middleware
 app.use(express.json());
-
 app.use(cookieParser());
 app.use(express.static('public'));
 app.set('trust proxy', true);
 
-// Router for service endpoints
 const apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
@@ -28,7 +22,6 @@ apiRouter.post('/auth/create', async (req, res) => {
     res.status(409).send({ msg: 'Existing user' });
   } else {
     const user = await DB.createUser(req.body.email, req.body.password);
-    // Set the cookie
     setAuthCookie(res, user.token);
     await DB.incrementSubscribers();
     res.send({
@@ -89,7 +82,7 @@ secureApiRouter.post('/removeSubscriber', async (req, res) => {
   res.send(successfulRemove);
 });
 
-// Default error handler
+// Error handler
 app.use(function (err, req, res, next) {
   res.status(500).send({ type: err.name, message: err.message });
 });
