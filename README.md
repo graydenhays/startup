@@ -90,4 +90,13 @@ For this deliverable I increment the subscriber count with the logged in user. T
 - [x] **Use MongoDB to store credentials** - Stores both user and their subscribed status.
 - [x] **Restricts functionality** - You cannot login until you have created an account. You cannot navigate to the info page where you can edit the subscriber count until you have been logged in.
 
+## WebSocket deliverable
+
+For this deliverable I used webSocket to update the subscriber count on the frontend in real time.
+
+- [x] **Backend listens for WebSocket connection** - done!
+- [x] **Frontend makes WebSocket connection** - done!
+- [x] **Data sent over WebSocket connection** - done!
+- [ ] **WebSocket data displayed** - I was unable to get the data to properly display.
+
 [Link to notes](https://github.com/graydenhays/startup/blob/main/notes.md)
