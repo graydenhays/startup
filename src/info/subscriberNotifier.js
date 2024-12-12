@@ -27,7 +27,7 @@ class SubscriberNotifier {
     };
     this.socket.onmessage = async (msg) => {
       try {
-        const event = JSON.parse(await msg.data.text());
+        const event = JSON.parse(await msg.data);
         this.notifyHandlers(event);
       } catch (error) {
         console.error('Error parsing WebSocket message:', error);

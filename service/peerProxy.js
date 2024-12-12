@@ -32,14 +32,12 @@ function peerProxy(httpServer) {
 
       // Handle subscribe event
       if (event.type === 'subscribe') {
-        await DB.incrementSubscribers();
         const newCount = await DB.getSubscriberCount();
         broadcastToAllClients({ type: 'subscriberUpdate', value: { count: newCount } });
       }
 
       // Handle unsubscribe event
       if (event.type === 'unsubscribe') {
-        await DB.decrementSubscribers();
         const newCount = await DB.getSubscriberCount();
         broadcastToAllClients({ type: 'subscriberUpdate', value: { count: newCount } });
       }
